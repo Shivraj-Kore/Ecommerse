@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cart</title>
+  </head>
+  <body>
+    {% extends "index.html" %} 
+    {% block content %} 
+    {% load static %}
+    
+    
+    <div class="pt-[65px]">
+      <h1 class="bg-white">Cart</h1>
+
+      <div class="p-2 grid grid-cols-1 w-full">
+        <div
+          class="text-white flex flex-col border justify-center border-[2px] border-[#112244]"
+        >
+          <div class="flex justify-between items-start m-2">
+            <button
+              class="w-[200px] text-white bg-[#112233] hover:bg-[#223344] font-medium rounded-lg p-3"
+            >
+              &larr; Continue Shopping
+            </button>
+
+            <button
+              class="w-[130px] text-[#112233] bg-[#11ff33] hover:bg-[#22ff44] font-bold rounded-lg p-3"
+            >
+              Checkout &rarr;
+            </button>
+          </div>
+          <hr class="mt-2 mx-4" />
+
+          <div class="m-2 px-2 flex justify-between items-center">
+            <h1 class="md:text-3xl text-xl font-bold">Total items : 3</h1>
+            <h1 class="md:text-3xl text-xl font-bold">Total Price : $ 60</h1>
+          </div>
+        </div>
+
+
+        <div class="text-white flex flex-col justify-center border-t-4 border-l-4 border-r-4 mt-2 border-[#112244]">
+          <div class="grid grid-cols-4 md:grid-cols-4 divide-x justify-center items-center">
+              <h1 class="flex justify-center items-center md:text-xl font-bold">
+                Items :
+              </h1>
+              <h1 class="flex justify-center items-center md:text-xl font-bold">
+                Price :
+              </h1>
+              <h1 class="flex justify-center items-center md:text-xl font-bold">
+                Quantity :
+              </h1>
+              <h1 class="flex justify-center items-center md:text-xl font-bold">
+                Total :
+              </h1>
+        </div>
+      </div>
+
+{% for item in items  %}
+
+        <div class="text-white flex flex-col border justify-center border-t-2 border-l-2 border-r-2 border-[#112244]">
+        <div class="grid grid-cols-4 md:grid-cols-4 divide-x justify-center items-center">
+          <div>
+            <div class="grid grid-cols-1 place-items-center">test</div>
+          </div>
+          <div>
+            <div class="grid grid-cols-1 place-items-center">test</div>
+          </div>
+          <div>
+            <div class="grid grid-cols-1 md:gap-4">
+              <div class="flex flex-col items-center justify-center">
+                <div class="flex items-center justify-center">test obj 1</div>
+                <div class="flex items-center justify-center">
+                  <button
+                    class="text-xl font-bold m-1 flex items-center justify-center h-[30px] w-[30px] bg-[#112233] py-2 px-4 rounded"
+                  >
+                    +
+                  </button>
+                  <button
+                    class="text-xl font-bold m-1 flex items-center justify-center h-[30px] w-[30px] bg-[#112233] py-2 px-4 rounded"
+                  >
+                    -
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="grid grid-cols-1 place-items-center">test</div>
+          </div>
+        </div>
+      </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endblock content %}
+  </body>
+</html>
+
+{% comment %}
+
+<div class="flex flex-col justify-center items-center">
+  <h1 class="text-xl font-bold">Items</h1>
+  <div class="flex flex-col">
+    <h1>test</h1>
+    <h1>test</h1>
+    <h1>test</h1>
+    <h1>test</h1>
+    <h1>test</h1>
+    <h1>test</h1>
+    <h1>test</h1>
+  </div>
+</div>
+<div class="flex flex-col justify-center items-center">
+  <h1 class="text-xl font-bold">Price</h1>
+  <div class="flex flex-col">
+    <h1>test</h1>
+    <h1>test</h1>
+    <h1>test</h1>
+    <h1>test</h1>
+    <h1>test</h1>
+    <h1>test</h1>
+    <h1>test</h1>
+  </div>
+</div>
+<div class="flex flex-col justify-center items-center">
+  Quantity
+  <div class="grid grid-cols-2 justify-center items-center gap-4">
+    <h1>test</h1>
+    <h1>test</h1>
+    <h1>test</h1>
+    <h1>test</h1>
+    <h1>test</h1>
+    <h1>test</h1>
+    <h1>test</h1>
+  </div>
+</div>
+<div class="flex flex-col justify-center items-center">
+  Total
+  <div class="flex flex-col">
+    <h1>test</h1>
+    <h1>test</h1>
+    <h1>test</h1>
+    <h1>test</h1>
+    <h1>test</h1>
+    <h1>test</h1>
+    <h1>test</h1>
+  </div>
+</div>
+
+{% endcomment %}

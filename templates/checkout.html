@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout</title>
+  </head>
+  <body>
+    {% extends "index.html" %}
+    {% block content %}
+    {% load static %}
+    <div class="pt-[65px]">
+      <h1 class="bg-white">Checkout</h1>
+      <div class='p-2 grid grid-cols-1 gap-4 md:grid-cols-2 w-full'>
+        <div class='text-white flex flex-col border border-[2px] border-[#112244]'>
+            <h1 class='flex justify-center items-center text-3xl font-bold'>Enter these details :</h1>
+            <div class='grid drid-cols-1 md:grid-cols-2 place-items-center'>
+                <div class='m-2'>
+                    <input type="text" placeholder='Enter Name ...' class='rounded m-2'>
+                </div>
+                <div class='m-2'>
+                    <input type="email" placeholder='Enter Email ...' class='rounded m-2'>
+                </div>
+            </div>
+            
+            <br>
+            <hr class='mx-4'>
+            <br>
+
+            <h1 class='flex justify-center items-center text-3xl font-bold'>Shipping info :</h1>
+
+            <div class='grid drid-cols-1 md:grid-cols-2 place-items-center'>
+                <div class='m-2'>
+                    <input type="text" placeholder='Enter Address ...' class='rounded m-2'>
+                </div>
+                <div class='m-2'>
+                    <input type="text" placeholder='Enter City ...' class='rounded m-2'>
+                </div>
+                <div class='m-2'>
+                    <input type="text" placeholder='Enter State ...' class='rounded m-2'>
+                </div>
+                <div class='m-2'>
+                    <input type="text" placeholder='Enter Pin Code ...' class='rounded m-2'>
+                </div>
+            </div>
+
+
+            <div class='m-2 px-2 flex justify-center items-center'>
+                <button class='font-bold text-white bg-[#112233] hover:bg-[#223344] rounded-lg p-3 w-full'>
+                    Continue
+                </button>
+            </div>
+        </div>
+
+          <div class='text-white flex flex-col border border-[2px] border-[#112244]'>
+            <div class='m-2 px-2 flex justify-center items-center'>
+                <button class='font-bold text-white bg-[#112233] hover:bg-[#223344] rounded-lg p-3 w-full'>
+                    Back To The Cart
+                </button>
+            </div>
+            
+            <br>
+            <hr class='mx-4'>
+            <br>
+            
+            <h1 class='flex justify-center items-center text-3xl font-bold'>Order Summary :</h1>
+            <div class='grid grid-cols-3 place-items-center m-2'>
+                <h1 class='text-xl'>Items</h1>
+                <h1 class='text-xl'>Quantity</h1>
+                <h1 class='text-xl'>Price</h1>
+            </div>
+            
+                <div class='m-2'>
+                    <h1 class='text-2xl font-bold'>Total Items : </h1>
+                    <h1 class='text-2xl font-bold'>Total Price : </h1>
+                </div>
+
+        </div>  
+
+    </div>
+    </div>
+    {% endblock content %}
+  </body>
+</html>

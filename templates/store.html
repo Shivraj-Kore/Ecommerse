@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Store</title>
+  </head>
+  <body>
+    {% extends "index.html" %}
+    {% block content %}
+        {% load static %}
+    <div class='pt-[65px]'>
+        <h1 class='bg-white' >Store</h1>
+        <div class='p-2 grid grid-cols-1 gap-4 md:grid-cols-3 w-full'>
+            
+        {% for product in products %}
+            <div class='text-white flex flex-col border border-[2px] border-[#112244]'>
+                <div class='flex justify-center items-center'>
+                    <img class='w-[640px] h-[360px] p-2' src='{{product.imageURL}}' alt="">
+                </div>
+                <div class='flex justify-start items-start'>
+                    <h1 class='px-2 m-2 text-2xl font-bold'>
+                        {{product.name}}
+                    </h1>
+                </div>
+                <hr class='mx-4'>
+                <div class='m-2 px-2 flex justify-between items-center'>
+                    <button class='text-white bg-[#112233] hover:bg-[#223344] font-medium rounded-lg p-3'>
+                        Add to cart
+                    </button>
+                    <button class='text-white bg-[#112233] hover:bg-[#223344] font-medium rounded-lg p-3'>
+                        View Product
+                    </button>
+                    <p class='text-3xl font-bold'>
+                        ₹ {{product.price}}
+                    </p>
+                </div>
+            </div>
+        {% endfor %}    
+        
+        </div>
+    </div>
+    {% endblock content %}
+  </body>
+</html>
