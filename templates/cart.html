@@ -34,8 +34,8 @@
           <hr class="mt-2 mx-4" />
 
           <div class="m-2 px-2 flex justify-between items-center">
-            <h1 class="md:text-3xl text-xl font-bold">Total items : 3</h1>
-            <h1 class="md:text-3xl text-xl font-bold">Total Price : $ 60</h1>
+            <h1 class="md:text-3xl text-xl font-bold">Total items : {{order.get_cart_total_items}}</h1>
+            <h1 class="md:text-3xl text-xl font-bold">Total Price : ₹{{order.get_cart_total_price}}</h1>
           </div>
         </div>
 
@@ -62,23 +62,29 @@
         <div class="text-white flex flex-col border justify-center border-t-2 border-l-2 border-r-2 border-[#112244]">
         <div class="grid grid-cols-4 md:grid-cols-4 divide-x justify-center items-center">
           <div>
-            <div class="grid grid-cols-1 place-items-center">test</div>
+            <div class="grid grid-cols-1 place-items-center">{{item.product.name}}</div>
           </div>
           <div>
-            <div class="grid grid-cols-1 place-items-center">test</div>
+            <div class="grid grid-cols-1 place-items-center">₹ {{item.product.price}}</div>
           </div>
           <div>
             <div class="grid grid-cols-1 md:gap-4">
               <div class="flex flex-col items-center justify-center">
-                <div class="flex items-center justify-center">test obj 1</div>
+                <div class="flex items-center justify-center">{{item.quantity}}</div>
                 <div class="flex items-center justify-center">
                   <button
-                    class="text-xl font-bold m-1 flex items-center justify-center h-[30px] w-[30px] bg-[#112233] py-2 px-4 rounded"
+                    class="text-xl font-bold m-1 flex items-center justify-center h-[30px] w-[30px] bg-[#112233] py-2 px-4 rounded
+                          update-cart"
+                    data-product={{item.product.id}}
+                    data-action='add'
                   >
                     +
                   </button>
                   <button
-                    class="text-xl font-bold m-1 flex items-center justify-center h-[30px] w-[30px] bg-[#112233] py-2 px-4 rounded"
+                    class="text-xl font-bold m-1 flex items-center justify-center h-[30px] w-[30px] bg-[#112233] py-2 px-4 rounded
+                          update-cart"
+                    data-product={{item.product.id}}
+                    data-action='remove'
                   >
                     -
                   </button>
@@ -88,7 +94,7 @@
           </div>
 
           <div>
-            <div class="grid grid-cols-1 place-items-center">test</div>
+            <div class="grid grid-cols-1 place-items-center">₹ {{item.get_total}}</div>
           </div>
         </div>
       </div>

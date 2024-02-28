@@ -4,11 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Store</title>
+
+    
   </head>
   <body>
     {% extends "index.html" %}
     {% block content %}
-        {% load static %}
+    {% load static %}
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let addToCartBtns = document.querySelectorAll('.update-cart');
+        
+            addToCartBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    let productName = this.getAttribute('data-name');
+                    alert(`${productName} added to the cart`);
+                });
+            });
+        });
+    </script>
+
+
+
+    
     <div class='pt-[65px]'>
         <h1 class='bg-white' >Store</h1>
         <div class='p-2 grid grid-cols-1 gap-4 md:grid-cols-3 w-full'>
@@ -25,7 +46,7 @@
                 </div>
                 <hr class='mx-4'>
                 <div class='m-2 px-2 flex justify-between items-center'>
-                    <button class='text-white bg-[#112233] hover:bg-[#223344] font-medium rounded-lg p-3'>
+                    <button data-product={{product.id}} data-action='add' data-name="{{product.name}}" class='text-white bg-[#112233] hover:bg-[#223344] font-medium rounded-lg p-3 update-cart'>
                         Add to cart
                     </button>
                     <button class='text-white bg-[#112233] hover:bg-[#223344] font-medium rounded-lg p-3'>

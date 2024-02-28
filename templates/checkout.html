@@ -12,9 +12,9 @@
     <div class="pt-[65px]">
       <h1 class="bg-white">Checkout</h1>
       <div class='p-2 grid grid-cols-1 gap-4 md:grid-cols-2 w-full'>
-        <div class='text-white flex flex-col border border-[2px] border-[#112244]'>
+        <div class='text-white flex flex-col order-2 border border-[2px] border-[#112244]'>
             <h1 class='flex justify-center items-center text-3xl font-bold'>Enter these details :</h1>
-            <div class='grid drid-cols-1 md:grid-cols-2 place-items-center'>
+            <div class='grid grid-cols-1 md:grid-cols-2 place-items-center'>
                 <div class='m-2'>
                     <input type="text" placeholder='Enter Name ...' class='rounded m-2'>
                 </div>
@@ -62,17 +62,31 @@
             <br>
             <hr class='mx-4'>
             <br>
-            
-            <h1 class='flex justify-center items-center text-3xl font-bold'>Order Summary :</h1>
-            <div class='grid grid-cols-3 place-items-center m-2'>
+            <h1 class='flex justify-center items-center text-3xl font-bold mb-4'>Order Summary :</h1>
+
+            <div class='grid grid-cols-3 border-[1px] border-[#112233] p-2 place-items-center'>
                 <h1 class='text-xl'>Items</h1>
-                <h1 class='text-xl'>Quantity</h1>
-                <h1 class='text-xl'>Price</h1>
+                <h1 class='text-xl'>quantity</h1>
+                <h1 class='text-xl'>price</h1>
             </div>
             
+            {% for item in items %}
+            <div class='grid grid-cols-3 border-[1px] border-[#112233] p-2 place-items-center'>
+                <h1 class='text-xl'>{{ item.product.name }}</h1>
+                <h1 class='text-xl'>{{ item.quantity }}</h1>
+                <h1 class='text-xl'>{{ item.product.price }}</h1>
+            </div>
+            {% endfor %}
+            
                 <div class='m-2'>
-                    <h1 class='text-2xl font-bold'>Total Items : </h1>
-                    <h1 class='text-2xl font-bold'>Total Price : </h1>
+                    <div class='flex justify-between items-center'>
+                        <h1 class='text-2xl font-bold p-2'>Total Items :  </h1>
+                        <h1 class='text-2xl font-bold p-2 text-[#00D100]'>{{order.get_cart_total_items}} </h1>
+                    </div>
+                    <div class='flex justify-between items-center'>
+                        <h1 class='text-2xl font-bold p-2'>Total Price : </h1>
+                        <h1 class='text-2xl font-bold p-2 text-[#00D100]'>₹ {{order.get_cart_total_price}}</h1>
+                    </div>
                 </div>
 
         </div>  
