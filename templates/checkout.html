@@ -9,17 +9,74 @@
     {% extends "index.html" %}
     {% block content %}
     {% load static %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var form = document.getElementById('form');
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                console.log("form submitted");
+                document.getElementById('form-button').classList.add('hidden');
+                document.getElementById('payment-info').classList.remove('hidden');
+            });
+
+            if (user != 'AnonymousUser'){
+                document.getElementById('user-info').classList.add('hidden')
+            }
+
+            document.getElementById('make-payment').addEventListener('click' , function(e){
+                submitFormData()
+            })
+
+            var total = '{{order.get_cart_total_items}}'
+            function submitFormData(){
+                console.log('payment done')
+                var userFormData = {
+                    'name':null,
+                    'email':null,
+                    'total':total,
+                }
+
+                var userShippingInfo = {
+                    'address':null,
+                    'city':null,
+                    'state':null,
+                    'pincode':null,
+                }
+
+                if (user != 'AnonymousUser'){
+                    userShippingInfo.address = form.address.value
+                    userShippingInfo.city = form.address.city
+                    userShippingInfo.state = form.address.state
+                    userShippingInfo.pincode = form.address.pincode
+                }
+
+                if (user == 'AnonymousUser'){
+                    userFormData.name = form.name.value
+                    userFormData.email = form.email.value
+                }
+            }
+
+
+        });
+    </script>
+    
+    
+
+
+
+
     <div class="pt-[65px]">
       <h1 class="bg-white">Checkout</h1>
       <div class='p-2 grid grid-cols-1 gap-4 md:grid-cols-2 w-full'>
         <div class='text-white flex flex-col order-2 border border-[2px] border-[#112244]'>
+            <form action="submit" id='form'>
             <h1 class='flex justify-center items-center text-3xl font-bold'>Enter these details :</h1>
-            <div class='grid grid-cols-1 md:grid-cols-2 place-items-center'>
+            <div id='user-info' class='grid grid-cols-1 md:grid-cols-2 place-items-center text-[#000000]'>
                 <div class='m-2'>
-                    <input type="text" placeholder='Enter Name ...' class='rounded m-2'>
+                    <input type="text" name='name' placeholder='Enter Name ...' class='rounded m-2'>
                 </div>
                 <div class='m-2'>
-                    <input type="email" placeholder='Enter Email ...' class='rounded m-2'>
+                    <input type="text" name='email' placeholder='Enter Email ...' class='rounded m-2'>
                 </div>
             </div>
             
@@ -29,27 +86,35 @@
 
             <h1 class='flex justify-center items-center text-3xl font-bold'>Shipping info :</h1>
 
-            <div class='grid drid-cols-1 md:grid-cols-2 place-items-center'>
+            <div class='grid drid-cols-1 md:grid-cols-2 place-items-center text-[#000000]'>
                 <div class='m-2'>
-                    <input type="text" placeholder='Enter Address ...' class='rounded m-2'>
+                    <input type="text" name='address' placeholder='Enter Address ...' class='rounded m-2'>
                 </div>
                 <div class='m-2'>
-                    <input type="text" placeholder='Enter City ...' class='rounded m-2'>
+                    <input type="text" name='city' placeholder='Enter City ...' class='rounded m-2'>
                 </div>
                 <div class='m-2'>
-                    <input type="text" placeholder='Enter State ...' class='rounded m-2'>
+                    <input type="text" name='state' placeholder='Enter State ...' class='rounded m-2'>
                 </div>
                 <div class='m-2'>
-                    <input type="text" placeholder='Enter Pin Code ...' class='rounded m-2'>
+                    <input type="text" name='pincode' placeholder='Enter Pin Code ...' class='rounded m-2'>
                 </div>
             </div>
 
 
+            <button type="submit" class="font-bold text-white bg-[#112233] hover:bg-[#223344] rounded-lg p-3 w-full" id="form-button">
+                Continue
+            </button>
+            
             <div class='m-2 px-2 flex justify-center items-center'>
-                <button class='font-bold text-white bg-[#112233] hover:bg-[#223344] rounded-lg p-3 w-full'>
-                    Continue
-                </button>
+                <h1 class='font-bold text-white border-[2px] rounded-lg p-3 w-full flex justify-center items-center hidden' id="payment-info">
+                    < Payment options here >
+                    <button type="button" class='border-[2px]' id='make-payment'>
+                        Make payment
+                    </button>
+                </h1>
             </div>
+        </form>
         </div>
 
           <div class='text-white flex flex-col border border-[2px] border-[#112244]'>
@@ -93,6 +158,7 @@
 
     </div>
     </div>
+
     {% endblock content %}
   </body>
 </html>
